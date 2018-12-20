@@ -32,7 +32,9 @@ func convertWebp(info os.FileInfo, semaphore chan bool) error {
 	}
 	defer w.Close()
 
-	return webp.Encode(w, img, &webp.Options{Lossless: true})
+	return webp.Encode(w, img, &webp.Options{
+		Quality: 100,
+	})
 }
 
 func convertPNG(info os.FileInfo, semaphore chan bool) error {
